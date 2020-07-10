@@ -14,8 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
 $router->post('/login', 'AuthController@postLogin');
 $router->post('/register', 'AuthController@save');
+$router->post('/uploadFile', 'AuthController@upload');
+$router->post('/multipleUpload', 'AuthController@multipleUpload');
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/alluser', 'AuthController@showAllUsers');
     $router->get('/currentUser', 'AuthController@currentUser');
